@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<body onload="getCookie()">
+
+    
+
+    <script>
+        console.log(document.cookie);
+        function setCookie() {
+        var title=document.getElementById("title").value;
+        var body=document.getElementById("text").value;
+        document.cookie = "title = " + title;
+        document.cookie = "text = " + body;
+        // console.log(cookie);
+        // return false;
+        }
+        function clearcookie()
+        {
+            var cookies = document.cookie.split(";");
+            document.cookie =  "title=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+            document.cookie =  "text=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+            /*for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                var eqPos = cookie.indexOf("=");
+                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+               // console.log(name);
+               // document.cookie =  "title=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+            }*/
+        }
+
+   
+
+        
+        function getCookie() {
+          var title = title + "=";
+          var decodedCookie = decodeURIComponent(document.cookie);
+          //console.log(decodedCookie);
+          var ca = decodedCookie.split(';');
+          console.log(ca);
+        //   for(var i = 0; i < ca.length; i++) {
+        //     var c = ca[i];
+        //     while (c.charAt(0) == ' ') {
+        //       c = c.substring(1);
+        //     }
+           
+        //   }
+          var cookieTitle = ca[0].split('=');
+         
+          if(cookieTitle[0] == "title")
+          {
+            document.getElementById("title").value=cookieTitle[1];
+          }
+          
+        //   var text = title + "=";
+        //   var decodedCookie = decodeURIComponent(document.cookie);
+        //   var ba = decodedCookie.split(';');
+        //   for(var i = 0; i < ca.length; i++) {
+        //     var b = ba[i];
+        //     while (b.charAt(0) == ' ') {
+        //       b = b.substring(1);
+        //     }
+        //   }
+            
+          var cookieBody = ca[1].split('=');
+      
+          if(cookieBody[0].trim() == "text")
+          {
+            document.getElementById("text").value = cookieBody[1];
+          }
+          return "";
+        }
+        
+        </script>
+
+
+        <h2>Enter notes here :</h2>
+
+        <form action="" method="post">
+
+        <label for="title">Write title:</label><br><br>
+        <input type="text" id="title" name="title"  placeholder="Enter title here" ><br><br>
+
+        <label for="text">Write text here:</label><br><br>
+        <textarea rows="5" cols="20" id="text" name="text" placeholder="Enter text here" value=""></textarea><br><br>
+        
+        <input type="submit" value="save" onclick="setCookie()">
+        <input type="reset" onclick="clearcookie()" value="Undo">
+        <input type="reset" value="clear">
+
+        </form> 
+
+        </body>
+        </html>

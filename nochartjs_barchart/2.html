@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="myCanvas" width="600" height="500" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+var fruit = [
+{
+    name:"Apple", 
+    quantity:20, 
+    color:"red"
+},
+{
+    name:"Orange", 
+    quantity:10, 
+    color:"orange"
+},
+{
+    name:"Banana", 
+    quantity:15, 
+    color:"yellow"
+},
+{
+    name:"Kiwi", 
+    quantity:3, 
+    color:"brown"
+},
+{
+    name:"Blueberry", 
+    quantity:5, 
+    color:"blue"
+},
+{
+    name:"Grapes", 
+    quantity:10, 
+    color:"green"
+}
+];
+
+var horizantol = 60;
+fruit.forEach(drawScale);
+
+
+function drawScale(item, index) {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+
+    ctx.fillStyle = item.color;
+    var quantity = (item.quantity)*20;
+    ctx.fillRect(horizantol, 500, 60, -quantity);
+    ctx.font = "11px Arial";
+    ctx.fillStyle = "black";
+    var txt = item.quantity;
+    ctx.fillText(txt,horizantol+20,485);
+
+    var txt = item.name;
+    ctx.fillText(txt,horizantol+10,495);
+
+    horizantol = horizantol+60;
+}
+
+</script>
+
+</body>
+</html>
